@@ -1,34 +1,3 @@
-const products = [
-  {
-    image: "images/products/athletic-cotton-socks-6-pairs.jpg",
-    name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
-    rating: {
-      stars: 4.5,
-      count: 87,
-    },
-    priceCents: 1090,
-  },
-  {
-    name: "Intermediate Size basketball",
-    image: "images/products/intermediate-composite-basketball.jpg",
-    rating: {
-      stars: 4,
-      count: 127,
-    },
-    priceCents: 2095,
-  },
-
-  {
-    name: " Adults Plain Cotton T-Shirt - 2 Pack",
-    image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
-    rating: {
-      stars: 4.5,
-      count: 56,
-    },
-    priceCents: 799,
-  },
-];
-
 let productsHTML = "";
 
 products.forEach((product, index) => {
@@ -56,7 +25,9 @@ products.forEach((product, index) => {
         }</div>
         </div>
 
-        <div class="product-price">$${product.priceCents / 100}</div>
+        <div class="product-price">$${(product.priceCents / 100).toFixed(
+          2
+        )}</div>
 
         <div class="product-quantity-container">
         <select>
@@ -80,10 +51,48 @@ products.forEach((product, index) => {
         Added
         </div>
 
-        <button class="add-to-cart-button button-primary">Add to Cart</button>
+        <button class="add-to-cart-button button-primary js-add-to-cart"
+        data-product-id = "${product.id}">Add to Cart</button>
         </div>`;
 });
 
-console.log(productsHTML);
+//console.log(productsHTML);
 
 document.querySelector(".js-productgrid").innerHTML = productsHTML;
+
+document.querySelectorAll(".js-add-to-cart").forEach((button, index) => {
+  button.addEventListener("click", () => {
+    const productId = button.dataset.productId;
+
+    let matchingItem;
+    cart.forEach((item) => {
+      if (productId === item.productId) {
+        matchingItem = item;
+      }
+    });
+
+    if (matchingItem) {
+      matchingItem.quantity += 1;
+    } else {
+      cart.push({
+        productId: productId,
+        quantity: 1,
+      });
+    }
+
+    // cart.push({
+    // productName: productName,
+    // quantity: 1,
+    // });
+
+    let cartQuantity = 0;
+
+    cart.forEach((item, index) => {
+      cartQuantity += item.quantity;
+    });
+
+    document.querySelector(".js-cartquantity").innerHTML = cartQuantity;
+    console.log(cartQuantity);
+    console.log(cart);
+  });
+});
