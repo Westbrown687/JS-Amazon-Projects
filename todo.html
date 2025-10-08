@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todolist</title>
+
+    <style>
+      body {
+        font-family: Arial;
+      }
+      .display-css,
+      .todoinput-css {
+        display: grid;
+        grid-template-columns: 200px 150px 100px;
+        column-gap: 10px;
+        row-gap: 10px;
+        align-items: center;
+        overflow: hidden;
+      }
+      .todoinput-css {
+        margin-bottom: 10px;
+        align-items: stretch;
+      }
+
+      .todo-css,
+      .dateinput-css {
+        font-size: 15px;
+        padding: 6px;
+      }
+      .add-css {
+        background-color: green;
+        border: none;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      .delete-css {
+        background-color: darkred;
+        color: white;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="todoinput-css">
+      <input class="js-todo todo-css" type="text" placeholder="Todo name" />
+      <input class="js-date dateinput-css" type="date" />
+      <button class="add-css" onclick="addTodo()">Add</button>
+    </div>
+
+    <div class="display display-css"></div>
+    <script src="scripts/todo.js"></script>
+  </body>
+</html>
