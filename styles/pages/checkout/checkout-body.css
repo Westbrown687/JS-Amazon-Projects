@@ -1,0 +1,25 @@
+.quantity-link{
+  width: 30px;
+  border-radius: 5px;
+  border-style: solid;
+  overflow: hidden;
+  display: none;
+}
+.save-quality-link{
+  cursor: pointer;
+  display: none;
+}
+.is-editing-quantity .quantity-link {
+  display: initial;
+}
+.is-editing-quantity .save-quality-link {
+  display: initial;
+}
+
+.is-editing-quantity .quantity-label {
+  display: none;
+}
+
+.is-editing-quantity .update-quantity-link {
+  display: none;
+}
