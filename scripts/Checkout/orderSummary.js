@@ -134,14 +134,7 @@ export function renderOrderSummary() {
       const productId = link.dataset.productId;
       removeFromCart(productId);
 
-      const container = document.querySelector(
-        `.js-cart-item-container-${productId}`
-      );
-
-      //console.log(container);
-      //container.classList.add("is-editing-quantity");
-
-      container.remove();
+      renderOrderSummary();
     });
   });
 
